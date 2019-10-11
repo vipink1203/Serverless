@@ -1,0 +1,17 @@
+service: serverless
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: dev
+  region: us-east-1
+  iamManagedPolicies:
+    - arn:aws:iam::xxxxxxx:role/service-role/iam_key_rotation-role-tr2uo7zc
+
+functions:
+  iam_check:
+    handler: handler.iam_check
+    events:
+      - http:
+          path: iam
+          method: GET
